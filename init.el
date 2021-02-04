@@ -122,7 +122,7 @@
 
 ;; Auto-Complete
 ;; (add-to-list 'load-path
-             (file-name-as-directory "~/.emacs.d/"))
+             (file-name-as-directory "~/.emacs.d/")
 ;; (require 'auto-complete)
 ;; (require 'auto-complete-config)
 ;; (global-auto-complete-mode t)
@@ -148,7 +148,17 @@
 ;; 以下、Ruby用設定
 ;; タブ文字を使用する
 (setq ruby-indent-tabs-mode t)
-;; (require 'ruby-end)ruby-block)
+;; (require 'ruby-end)
+;; (add-hook 'ruby-mode-hook
+  ;; '(lambda ()
+    ;; (abbrev-mode 1)
+    ;; (electric-pair-mode t)
+    ;; (electric-indent-mode t)
+    ;; (electric-layout-mode t)))
+
+;; (require 'ruby-block)
+;; (ruby-block-mode t)
+;; (setq ruby-block-highlight-toggle t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
