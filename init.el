@@ -11,14 +11,14 @@
 ;; (add-to-load-path "elisp" "conf" "public_repos")
 
 ;; package.elを有効化
-(require 'package)
+;; (require 'package)
 ;; パッケージリポジトリにMarmaladeとMELPAを追加
-(add-to-list
- 'package-archives
- '("marmalade" . "https://marmalade-repo.org/packages/"))
-(add-to-list
- 'package-archives
- '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list
+ ;; 'package-archives
+ ;; '("marmalade" . "https://marmalade-repo.org/packages/"))
+;; (add-to-list
+ ;; 'package-archives
+ ;; '("melpa" . "https://melpa.org/packages/") t)
 ;; インストール済みのElispを読み込む
 ;; (package-initialize)
 
@@ -100,10 +100,10 @@
 ;; (set-face-background 'region "darkgreen")
 
 ;; paren-mode:対応するカッコを強調して表示する
-(setq show-paren-delay 0) ;表示までの秒数
-(show-paren-mode t) 
+;; (setq show-paren-delay 0) ;表示までの秒数
+;; (show-paren-mode t) 
 ;; parenのスタイル:expressionはカッコ内も強調
-(setq show-paren-style 'expression)
+;; (setq show-paren-style 'expression)
 ;; フェイスを変更
 ;; (set-face-background 'show-paren-match-face nil)
 
@@ -113,16 +113,22 @@
 (load-theme 'deep-blue t t)
  (enable-theme 'deep-blue)
 
-;; 文法チェックツール Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; Terminal emulator multi-term
+(require 'multi-term)
+(when (require 'multi-term nil t)
+  ;; シェルの指定
+  (setq multi-term-program "/usr/local/bin/zsh"))
 
 ;; helm
 ;; (require 'helm)
 ;; (require 'helm-config)
 
+;; 文法チェックツール Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 ;; Auto-Complete
 ;; (add-to-list 'load-path
-             (file-name-as-directory "~/.emacs.d/")
+;;            (file-name-as-directory "~/.emacs.d/")
 ;; (require 'auto-complete)
 ;; (require 'auto-complete-config)
 ;; (global-auto-complete-mode t)
@@ -132,8 +138,6 @@
 
 (require 'minimap)
 (require 'whitespace)
-(require 'multi-term)
-(setq multi-term-program shell-file-name)
 
 ;; (require 'dashboard)
 ;; (dashboard-setup-startup-hook)
