@@ -117,11 +117,12 @@
 (require 'multi-term)
 (when (require 'multi-term nil t)
   ;; シェルの指定
-  (setq multi-term-program "/usr/local/bin/zsh"))
+  ;; (setq multi-term-program "/usr/local/bin/zsh"))
+  (setq multi-term-program "/usr/local/bin//bash"))
 
 ;; helm
-;; (require 'helm)
-;; (require 'helm-config)
+(require 'helm)
+(require 'helm-config)
 
 ;; 文法チェックツール Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -165,7 +166,24 @@
 ;; (setq ruby-block-highlight-toggle t)
 
 
-;; Local Variables:
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-archives
+   '(("gnu" . "https://elpa.gnu.org/packages/")
+     ("melpa" . "https://melpa.org/packages/")
+     ("org" . "https://orgmode.org/elpa/")))
+ '(package-selected-packages
+   '(helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+ ;; Local Variables:
 ;; indent-tabs-mode: nil
 ;; End:
 
