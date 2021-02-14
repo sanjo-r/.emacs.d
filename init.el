@@ -84,14 +84,22 @@
 ;; ここにいっぱい設定を書く
 (provide 'init)
 
-;; カラム番号も表示
+;; 文字コード指定
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+
+;; カラム番号を表示
 (column-number-mode t)
+
+;; ファイルサイズを表示
+(size-indication-mode t)
 
 ;; タイトルバーにファイルのパスを表示
 (setq frame-title-format "%f")
 
 ;; 行番号を常に表示する
 (global-linum-mode t)
+;; (setq linum-format "%d ")    ;行番号後ろにスペース
 
 ;; TABの設定
 (setq-default tab-width 2)
@@ -118,7 +126,7 @@
 (when (require 'multi-term nil t)
   ;; シェルの指定
   ;; (setq multi-term-program "/usr/local/bin/zsh"))
-  (setq multi-term-program "/usr/local/bin//bash"))
+  (setq multi-term-program "/usr/local/bin/bash"))
 
 ;; helm
 (require 'helm)
@@ -148,6 +156,9 @@
   ;; :config
   ;; (dashboard-setup-startup-hook))
 
+;; 閉じカッコ自動挿入
+;; (electric-pair-mode 1)
+
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; 以下、Ruby用設定
@@ -171,12 +182,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(electric-pair-mode t)
  '(package-archives
-   '(("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/")
-     ("org" . "https://orgmode.org/elpa/")))
+	 '(("gnu" . "https://elpa.gnu.org/packages/")
+		 ("melpa" . "https://melpa.org/packages/")
+		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-   '(helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
