@@ -99,7 +99,7 @@
 
 ;; 行番号を常に表示する
 (global-linum-mode t)
-;; (setq linum-format "%d ")    ;行番号後ろにスペース
+;; (setq linum-format "%d ")    ; 行番号後ろにスペース
 
 ;; TABの設定
 (setq-default tab-width 2)
@@ -109,7 +109,7 @@
 
 ;; paren-mode:対応するカッコを強調して表示する
 ;; (setq show-paren-delay 0) ;表示までの秒数
-;; (show-paren-mode t) 
+;; (show-paren-mode t)
 ;; parenのスタイル:expressionはカッコ内も強調
 ;; (setq show-paren-style 'expression)
 ;; フェイスを変更
@@ -146,7 +146,23 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (require 'minimap)
+
+;; 全角スペースの可視化
 (require 'whitespace)
+(global-whitespace-mode t)
+(set-face-background 'whitespace-space nil) ; 半角スペースの視覚化を無効化
+(set-face-background 'whitespace-indentation nil) ; 行頭の8つ以上のスペースの視覚化を無効化
+(setq whitespace-space-regexp "\\(\x3000+\\)")
+(setq whitespace-display-mappings
+			'(space-mark ?\x3000 [?\□]))
+
+;; バックスラッシュの入力設定
+(define-key global-map [?\M-¥] [?\\])
+;; インクリメンタルサーチの設定
+(defun isearch-add-backslash()
+  (interactive)
+  (isearch-printing-char ?\\ 1))
+(define-key isearch-mode-map [?\M-¥] 'isearch-add-backslash)
 
 ;; (require 'dashboard)
 ;; (dashboard-setup-startup-hook)
@@ -154,7 +170,7 @@
 ;; (use-package dashboard
   ;; :ensure t
   ;; :config
-  ;; (dashboard-setup-startup-hook))
+;; (dashboard-setup-startup-hook))
 
 ;; 閉じカッコ自動挿入
 ;; (electric-pair-mode 1)
