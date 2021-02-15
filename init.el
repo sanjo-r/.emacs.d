@@ -84,6 +84,20 @@
 ;; ここにいっぱい設定を書く
 (provide 'init)
 
+;; yes or noをy or n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; 閉じカッコ自動挿入
+;; (electric-pair-mode 1)
+
+;; バックスラッシュの入力設定
+(define-key global-map [?\M-¥] [?\\])
+;; インクリメンタルサーチの設定
+(defun isearch-add-backslash()
+  (interactive)
+  (isearch-printing-char ?\\ t))
+(define-key isearch-mode-map [?\M-¥] 'isearch-add-backslash)
+
 ;; 文字コード指定
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
@@ -142,28 +156,28 @@
 ;; (require 'auto-complete-config)
 ;; (global-auto-complete-mode t)
 
-;; yes or noをy or n
-(set 'yes-or-no-p 'y-or-n-p)
+;; ファイルツリーの表示
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
-(require 'minimap)
+;; インデントの可視化
+(require 'indent-guide)
+(indent-guide-global-mode t)
+(setq indent-guide-delay 0.1)
 
 ;; 全角スペースの可視化
 (require 'whitespace)
 (global-whitespace-mode t)
-(set-face-background 'whitespace-space nil) ; 半角スペースの視覚化を無効化
-(set-face-background 'whitespace-indentation nil) ; 行頭の8つ以上のスペースの視覚化を無効化
+;; 半角スペースの視覚化を無効化
+(set-face-background 'whitespace-space nil)
+;; 行頭の8つ以上のスペースの視覚化を無効化
+(set-face-background 'whitespace-indentation nil)
 ;; しかし半角スペース2つ以上が無効化された、なんで?
 ;; (setq whitespace-space-regexp "\\(\x3000+\\)")
 ;; (setq whitespace-display-mappings
 			;; '(space-mark ?\x3000 [?\□]))
 
-;; バックスラッシュの入力設定
-(define-key global-map [?\M-¥] [?\\])
-;; インクリメンタルサーチの設定
-(defun isearch-add-backslash()
-  (interactive)
-  (isearch-printing-char ?\\ t))
-(define-key isearch-mode-map [?\M-¥] 'isearch-add-backslash)
+(require 'minimap)
 
 ;; (require 'dashboard)
 ;; (dashboard-setup-startup-hook)
@@ -172,9 +186,6 @@
   ;; :ensure t
   ;; :config
 ;; (dashboard-setup-startup-hook))
-
-;; 閉じカッコ自動挿入
-;; (electric-pair-mode 1)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
@@ -205,7 +216,7 @@
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
