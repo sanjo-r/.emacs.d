@@ -143,7 +143,7 @@
 ;; (global-auto-complete-mode t)
 
 ;; yes or noをy or n
-(fset 'yes-or-no-p 'y-or-n-p)
+(set 'yes-or-no-p 'y-or-n-p)
 
 (require 'minimap)
 
@@ -152,16 +152,17 @@
 (global-whitespace-mode t)
 (set-face-background 'whitespace-space nil) ; 半角スペースの視覚化を無効化
 (set-face-background 'whitespace-indentation nil) ; 行頭の8つ以上のスペースの視覚化を無効化
-(setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings
-			'(space-mark ?\x3000 [?\□]))
+;; しかし半角スペース2つ以上が無効化された、なんで?
+;; (setq whitespace-space-regexp "\\(\x3000+\\)")
+;; (setq whitespace-display-mappings
+			;; '(space-mark ?\x3000 [?\□]))
 
 ;; バックスラッシュの入力設定
 (define-key global-map [?\M-¥] [?\\])
 ;; インクリメンタルサーチの設定
 (defun isearch-add-backslash()
   (interactive)
-  (isearch-printing-char ?\\ 1))
+  (isearch-printing-char ?\\ t))
 (define-key isearch-mode-map [?\M-¥] 'isearch-add-backslash)
 
 ;; (require 'dashboard)
