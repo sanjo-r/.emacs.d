@@ -149,8 +149,6 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Auto-Complete
-(add-to-list 'load-path
-            (file-name-as-directory "~/.emacs.d/auto-complete-master"))
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
@@ -201,22 +199,13 @@
 ;; (ruby-block-mode t)
 ;; (setq ruby-block-highlight-toggle t)
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(electric-pair-mode t)
- '(helm-completion-style 'emacs)
- '(helm-mode t)
- '(minimap-mode nil)
- '(package-archives
+;; smart-compile(編集中のファイルをコンパイル/実行できる)
+(require 'smart-compile)
 	 '(("gnu" . "https://elpa.gnu.org/packages/")
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
