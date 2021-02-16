@@ -126,8 +126,6 @@
 ;; (show-paren-mode t)
 ;; parenのスタイル:expressionはカッコ内も強調
 ;; (setq show-paren-style 'expression)
-;; フェイスを変更
-;; (set-face-background 'show-paren-match-face nil)
 
 ;; テーマ deep-blue を適用
 (add-to-list 'custom-theme-load-path
@@ -145,16 +143,17 @@
 ;; helm
 (require 'helm)
 (require 'helm-config)
+(helm-mode t)
 
 ;; 文法チェックツール Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; Auto-Complete
-;; (add-to-list 'load-path
-;;            (file-name-as-directory "~/.emacs.d/")
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (global-auto-complete-mode t)
+(add-to-list 'load-path
+            (file-name-as-directory "~/.emacs.d/auto-complete-master"))
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
 
 ;; ファイルツリーの表示
 (require 'neotree)
@@ -181,11 +180,9 @@
 
 (require 'dashboard)
 (dashboard-setup-startup-hook)
-;; Or if you use use-package
-;; (use-package dashboard
-  ;; :ensure t
-  ;; :config
-  ;; (dashboard-setup-startup-hook))
+
+(require 'which-key)
+(which-key-mode)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
@@ -211,12 +208,15 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(electric-pair-mode t)
+ '(helm-completion-style 'emacs)
+ '(helm-mode t)
+ '(minimap-mode nil)
  '(package-archives
 	 '(("gnu" . "https://elpa.gnu.org/packages/")
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
