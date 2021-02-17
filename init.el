@@ -187,13 +187,14 @@
 ;; 以下、Ruby用設定
 ;; タブ文字を使用する
 ;; (setq ruby-indent-tabs-mode t)
-;; (require 'ruby-end)
-;; (add-hook 'ruby-mode-hook
-  ;; '(lambda ()
-    ;; (abbrev-mode 1)
-    ;; (electric-pair-mode t)
-    ;; (electric-indent-mode t)
-    ;; (electric-layout-mode t)))
+
+(require 'ruby-end)
+(add-hook 'ruby-mode-hook
+   '(lambda ()
+     (abbrev-mode 1)
+     (electric-pair-mode t)
+     (electric-indent-mode t)
+     (electric-layout-mode t)))
 
 ;; (require 'ruby-block)
 ;; (ruby-block-mode t)
@@ -201,6 +202,22 @@
 
 ;; smart-compile(編集中のファイルをコンパイル/実行できる)
 (require 'smart-compile)
+    ;; (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
+    ;; (define-key ruby-mode-map (kbd "C-c C-c") (kbd "C-c c C-m"))
+
+;; xmpfilter
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(electric-pair-mode t)
+ '(helm-completion-style 'emacs)
+ '(helm-mode t)
+ '(minimap-mode nil)
+ '(package-archives
 	 '(("gnu" . "https://elpa.gnu.org/packages/")
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
