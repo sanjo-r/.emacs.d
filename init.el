@@ -160,7 +160,7 @@
 ;; インデントの可視化
 (require 'indent-guide)
 (indent-guide-global-mode t)
-(setq indent-guide-delay 0.1)
+(setq indent-guide-delay 0)
 
 ;; 全角スペースの可視化
 (require 'whitespace)
@@ -182,7 +182,25 @@
 (require 'which-key)
 (which-key-mode)
 
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;; 対応するカッコの強調 rainbow-delimiters
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; 括弧の色を強調する設定
+(require 'cl-lib)
+(require 'color)
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
+
+;; ivyの見た目をよりモダンにしてくれるパッケージ
+;; (require 'ivy-rich)
+;; (ivy-rich-mode t)
+;; (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
 ;; 以下、Ruby用設定
 ;; タブ文字を使用する
@@ -222,7 +240,7 @@
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
