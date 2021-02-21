@@ -137,8 +137,7 @@
 (require 'multi-term)
 (when (require 'multi-term nil t)
   ;; シェルの指定
-  ;; (setq multi-term-program "/usr/local/bin/zsh"))
-  (setq multi-term-program "/usr/local/bin/bash"))
+  (setq multi-term-program "/bin/zsh"))
 
 ;; helm
 (require 'helm)
