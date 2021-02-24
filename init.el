@@ -137,7 +137,7 @@
 (require 'multi-term)
 (when (require 'multi-term nil t)
   ;; シェルの指定
-  (setq multi-term-program "/bin/zsh"))
+  (setq multi-term-program "/bin/bash"))
 
 ;; helm
 (require 'helm)
@@ -196,6 +196,11 @@
     (cl-callf color-saturate-name (face-foreground face) 30))))
 (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
 
+;; アクティブなウィンドウの強調表示 auto-dim-other-buffers
+(add-hook 'after-init-hook (lambda ()
+  (when (fboundp 'auto-dim-other-buffers-mode)
+    (auto-dim-other-buffers-mode t))))
+
 ;; ivyの見た目をよりモダンにしてくれるパッケージ
 ;; (require 'ivy-rich)
 ;; (ivy-rich-mode t)
@@ -239,7 +244,7 @@
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(auto-dim-other-buffers meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
