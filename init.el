@@ -118,6 +118,10 @@
 ;; TABの設定
 (setq-default tab-width 2)
 
+;; 矩形編集の設定
+(cua-mode t)
+;; (define-key global-map (kbd "C-RET") 'cua-set-rectangle-mark)
+
 ;; 背景色を変更
 ;; (set-face-background 'region "darkgreen")
 
