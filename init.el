@@ -122,6 +122,9 @@
 (cua-mode t)
 ;; (define-key global-map (kbd "C-RET") 'cua-set-rectangle-mark)
 
+;; 終了時にオートセーブファイルを削除する
+(setq delete-auto-save-files t)
+
 ;; 背景色を変更
 ;; (set-face-background 'region "darkgreen")
 
@@ -149,15 +152,16 @@
 (helm-mode t)
 
 ;; 文法チェックツール Flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; flycheck-popup-tip(flycheckの結果をポップアップに表示)
-(with-eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode))
-(eval-after-load 'flycheck
-  (if (display-graphic-p)
-      (flycheck-pos-tip-mode)
-    (flycheck-popup-tip-mode)))
+;; (with-eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode))
+;; (eval-after-load 'flycheck
+;;   (if (display-graphic-p)
+;;       (flycheck-pos-tip-mode)
+;;     (flycheck-popup-tip-mode)))
 
 ;; Auto-Complete
 (require 'auto-complete)
@@ -218,6 +222,12 @@
 ;; (ivy-rich-mode t)
 ;; (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
+;; 以下、MarkDown用設定
+(require 'markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+;; (markdown-live-preview-mode t)
+
 ;; 以下、Ruby用設定
 ;; タブ文字を使用する
 ;; (setq ruby-indent-tabs-mode t)
@@ -256,7 +266,7 @@
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(flycheck-popup-tip auto-dim-other-buffers meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(markdown-preview-mode flycheck-popup-tip auto-dim-other-buffers meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
