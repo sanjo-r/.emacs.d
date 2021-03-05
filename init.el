@@ -125,6 +125,9 @@
 ;; 終了時にオートセーブファイルを削除する
 (setq delete-auto-save-files t)
 
+;; file名の補完で大文字小文字を区別しない
+(setq completion-ignore-case t)
+
 ;; 背景色を変更
 ;; (set-face-background 'region "darkgreen")
 
