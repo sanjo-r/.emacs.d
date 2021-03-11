@@ -454,7 +454,7 @@
 	      ("João Távora" . "joaotavora@gmail.com"))
 	     (:maintainer "João Távora" . "joaotavora@gmail.com"))])
  (dash .
-       [(2 18 0)
+       [(2 18 1)
 	((emacs
 	  (24)))
 	"A modern list library for Emacs" tar
@@ -1528,6 +1528,14 @@
 	    ("Julien Danjou" . "julien@danjou.info"))
 	   (:keywords "comm")
 	   (:url . "https://elpa.gnu.org/packages/oauth2.html"))])
+ (ob-haxe .
+	  [(1 0)
+	   nil "org-babel functions for haxe evaluation" tar
+	   ((:url . "https://orgmode.org")
+	    (:maintainer "Ian Martins" . "ianxm@jhu.edu")
+	    (:authors
+	     ("Ian Martins" . "ianxm@jhu.edu"))
+	    (:keywords "literate programming" "reproducible research"))])
  (objed .
 	[(0 8 3)
 	 ((emacs
@@ -1701,7 +1709,7 @@
 	   ("Mario Lang" . "mlang@delysid.org"))
 	  (:maintainer "Mario Lang" . "mlang@delysid.org"))])
  (posframe .
-	   [(0 8 5)
+	   [(0 8 6)
 	    ((emacs
 	      (26)))
 	    "Pop a posframe (just a frame) at point" tar
