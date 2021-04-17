@@ -147,7 +147,7 @@
 (require 'multi-term)
 (when (require 'multi-term nil t)
   ;; シェルの指定
-  (setq multi-term-program "/bin/zsh"))
+  (setq multi-term-program "/bin/bash"))
 
 ;; helm
 (require 'helm)
@@ -196,11 +196,6 @@
 
 (require 'dashboard)
 (dashboard-setup-startup-hook)
-(setq dashboard-items '((recents  . 5)
-                        (bookmarks . 5)
-                        (projects . 5)
-                        (agenda . 5)
-                        (registers . 5)))
 
 (require 'which-key)
 (which-key-mode)
@@ -229,20 +224,6 @@
 ;; (require 'ivy-rich)
 ;; (ivy-rich-mode t)
 ;; (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-
-;; org-pomodoro
-(require 'org-pomodoro)
-(add-hook 'org-pomodoro-started
-											(lambda () (notifications-notify :title "org-pomodoro"
-											:body "Let's focus for 25 minutes!"
-											:app-icon "~/.emacs.d/img/001-food-and-restaurant.png")))
-(add-hook 'org-pomodoro-finished
-											(lambda () (notifications-notify :title "org-pomodoro"
-											:body "Well done! Take a break."
-											:app-icon "~/.emacs.d/img/004-beer.png")))
-
-;; 以下、org-mode用設定
-(setq org-startup-folded 'showall)
 
 ;; 以下、MarkDown用設定
 (require 'markdown-mode)
@@ -284,11 +265,7 @@
 
 ;; xmpfilter
 
-;; 以下、Common Lisp用設定
-;; Lisp用IDE SLIME
-(require 'slime)
-;; (slime-setup '(slime-repl slime-fancy slime-banner))
-(setq inferior-lisp-program "clisp")
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -304,7 +281,7 @@
 		 ("melpa" . "https://melpa.org/packages/")
 		 ("org" . "https://orgmode.org/elpa/")))
  '(package-selected-packages
-	 '(org-pomodoro slime markdown-preview-mode flycheck-popup-tip auto-dim-other-buffers meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
+	 '(slime markdown-preview-mode flycheck-popup-tip auto-dim-other-buffers meghanada cl-lib ivy-rich smart-compile auto-complete which-key dashboard all-the-icons projectile page-break-lines neotree indent-guide markdown-mode helm web-mode ruby-end ruby-electric rspec-mode rainbow-delimiters python-mode multi-term minimap leaf-keywords hydra helm-descbinds gnu-elpa flycheck elscreen el-get blackout ac-emoji)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
